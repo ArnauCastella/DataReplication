@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nodes Monitoring</title>
+</head>
+<body>
+    <h2>Node A1:</h2>
+    <div id="A1"></div>
+    <h2>Node A2:</h2>
+    <div id="A2"></div>
+    <h2>Node A3:</h2>
+    <div id="A3"></div>
+    <h2>Node B1:</h2>
+    <div id="B1"></div>
+    <h2>Node B2:</h2>
+    <div id="B2"></div>
+    <h2>Node C1:</h2>
+    <div id="C1"></div>
+    <h2>Node C2:</h2>
+    <div id="C2"></div>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://127.0.0.1:12000');
+
+        socket.on('update_message', function(data) {
+            document.getElementById(data.node).innerText = data.data;
+        });
+    </script>
+</body>
+</html>
